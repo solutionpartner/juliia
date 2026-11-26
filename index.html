@@ -10,7 +10,7 @@
   -----------------------------------------------------------------------------
   NOTE ON MISSING ASSETS
   Product photography has NOT been provided. Product shots are rendered as
-  styled placeholders labelled "PLACEHOLDER: product shot needed - <name>".
+  styled placeholders labelled " - <name>".
   Every missing resource is listed in MISSING_ASSETS.txt (same folder) so a
   photographer / art director can deliver real photography against that list.
   -----------------------------------------------------------------------------
@@ -186,7 +186,7 @@ main{position:relative;z-index:5;background:var(--color-bg)}
   text-transform:uppercase;white-space:nowrap}
 .cat-item .plus{color:var(--color-accent);font-size:18px;line-height:1;transition:transform .4s cubic-bezier(.22,.61,.36,1)}
 .cat-item:hover .plus{transform:rotate(90deg)}
-.cat .ghost{aspect-ratio:16/10;margin-top:14px;border:1px dashed rgba(242,241,246,.14);border-radius:14px;
+.cat .ghost{position:relative;overflow:hidden}aspect-ratio:16/10;margin-top:14px;border:1px dashed rgba(242,241,246,.14);border-radius:14px;
   display:flex;align-items:center;justify-content:center;padding:16px;text-align:center;
   font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--color-text-dim)}
 
@@ -266,7 +266,7 @@ footer{position:relative;z-index:5;background:var(--color-bg-deep);padding:calc(
   .foot-top{grid-template-columns:1fr}
 }
 </style>
-</head>
+<style>.shot.feature,.ghost{position:relative;overflow:hidden}.shot.feature>img,.ghost>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.shot-label{position:relative;z-index:2}</style></head>
 <body>
 <div id="stage">
   <div id="main-canvas">
@@ -349,29 +349,29 @@ footer{position:relative;z-index:5;background:var(--color-bg-deep);padding:calc(
         <!-- Makeup -->
         <div class="cat" data-reveal>
           <div class="cat-top"><span class="cat-num">01</span><span class="cat-label">MAKEUP</span></div>
-          <div class="shot feature"><div class="shot-label"><b>Rouge Mat — No. 04 “Éclat”</b>PLACEHOLDER: product shot needed<br><small>makeup-rouge-mat-no04-eclat.jpg</small></div></div>
+          <div class="shot feature"><img src="rouge-mat-no04-eclat.jpg" alt="" loading="lazy"><div class="shot-label"><b>Rouge Mat — No. 04 “Éclat”</b> <br><small>makeup-rouge-mat-no04-eclat.jpg</small></div></div>
           <div class="cat-item"><span class="it-name">Fluide Radieux</span><span class="it-meta">Peau · 01</span></div>
           <div class="cat-item"><span class="it-name">Liner Velours</span><span class="it-meta">Regard · 02</span></div>
           <div class="cat-item"><span class="it-name">Fil Souffle</span><span class="it-meta">Levres · 03</span></div>
-          <div class="ghost">PLACEHOLDER: product shot needed — makeup-grid-01.jpg</div>
+          <div class="ghost"><img src="makeup-grid-01.jpg" alt="" loading="lazy"></div>
         </div>
         <!-- Fragrance -->
         <div class="cat" data-reveal>
           <div class="cat-top"><span class="cat-num">02</span><span class="cat-label">FRAGRANCE</span></div>
-          <div class="shot feature"><div class="shot-label"><b>Eau — No. 02 “Our”</b>PLACEHOLDER: product shot needed<br><small>fragrance-eau-no02-our.jpg</small></div></div>
+          <div class="shot feature"><img src="fragrance-eau-no02-our.jpg" alt="" loading="lazy"><div class="shot-label"><b>Eau — No. 02 “Our”</b> <br><small>fragrance-eau-no02-our.jpg</small></div></div>
           <div class="cat-item"><span class="it-name">Eau de JULIIA</span><span class="it-meta">Extrait · 01</span></div>
           <div class="cat-item"><span class="it-name">Bois de Cèdre</span><span class="it-meta">Extrait · 02</span></div>
           <div class="cat-item"><span class="it-name">Souffle d'Iris</span><span class="it-meta">Eau · 03</span></div>
-          <div class="ghost">PLACEHOLDER: product shot needed — fragrance-grid-02.jpg</div>
+          <div class="ghost"><img src="fragrance-grid-02.jpg" alt="" loading="lazy"></div>
         </div>
         <!-- Skincare -->
         <div class="cat" data-reveal>
           <div class="cat-top"><span class="cat-num">03</span><span class="cat-label">SKINCARE</span></div>
-          <div class="shot feature"><div class="shot-label"><b>Concentré — No. 01 “Peau”</b>PLACEHOLDER: product shot needed<br><small>skincare-concentre-no01-peau.jpg</small></div></div>
+          <div class="shot feature"><img src="skincare-concentre-no01-peau.jpg" alt="" loading="lazy"><div class="shot-label"><b>Concentré — No. 01 “Peau”</b> <br><small>skincare-concentre-no01-peau.jpg</small></div></div>
           <div class="cat-item"><span class="it-name">Sérum Clarté</span><span class="it-meta">Soin · 01</span></div>
           <div class="cat-item"><span class="it-name">Baume Silent</span><span class="it-meta">Soin · 02</span></div>
           <div class="cat-item"><span class="it-name">Huile Unique</span><span class="it-meta">Soin · 03</span></div>
-          <div class="ghost">PLACEHOLDER: product shot needed — skincare-grid-03.jpg</div>
+          <div class="ghost"><img src="skincare-grid-03.jpg" alt="" loading="lazy"></div>
         </div>
       </div>
     </div>

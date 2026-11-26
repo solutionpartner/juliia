@@ -4,6 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JULIIA — Colour, Scent &amp; Care</title>
+<!--
+  =============================================================================
+  JULIIA — Luxury Beauty House (GitHub Pages: solutionpartner.github.io/mika/)
+  -----------------------------------------------------------------------------
+  NOTE ON MISSING ASSETS
+  Product photography has NOT been provided. Product shots are rendered as
+  styled placeholders labelled "PLACEHOLDER: product shot needed - <name>".
+  Every missing resource is listed in MISSING_ASSETS.txt (same folder) so a
+  photographer / art director can deliver real photography against that list.
+  -----------------------------------------------------------------------------
+  HERO (stage) preserved unchanged. Body sections + footer appended below.
+  =============================================================================
+-->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23161826'/%3E%3Ctext x='16' y='23' font-family='Inter,system-ui,sans-serif' font-size='19' font-weight='500' fill='%23ff2800' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,32 +24,40 @@
 <style>
 :root{
   --color-bg:#161826;
+  --color-bg-deep:#10121c;
+  --color-bg-raise:#1c1f31;
   --color-text:#F2F1F6;
+  --color-text-dim:#b6b2c4;
   --color-accent:#FF2800;
+  --color-brand:#A81208;
+  --color-gold:#d8b96a;
+  --color-line:rgba(242,241,246,.12);
   --font-heading:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
   --font-body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
 }
 html,body{background:var(--color-bg)!important;color:var(--color-text)}
-html,body{margin:0;padding:0;height:100%;overflow:hidden}
+html,body{margin:0;padding:0;min-height:100%;overflow-x:hidden;scroll-behavior:smooth}
 a{color:var(--color-accent);text-decoration:none} a:hover{opacity:.6}
 :focus-visible{outline:2px solid var(--color-accent);outline-offset:2px}
 button{background:none;border:0;padding:0;margin:0;font:inherit;cursor:pointer}
 svg{display:block}
+
+/* ============================ HERO (unchanged) ============================ */
 #stage{
-  --edge:clamp(16px,2vw,32px);
-  --brand-red:#A81208;
   position:relative;width:100vw;height:100vh;overflow:hidden;user-select:none;
   cursor:none;font-family:var(--font-body);background:var(--color-bg);
+  --edge:clamp(16px,2vw,32px);
+  --brand-red:#A81208;
 }
-#main-canvas{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;
+#main-canvas{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;
   opacity:0;transition:opacity .3s ease;background:var(--color-bg)}
 #main-canvas video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #vid-left{display:none}
 #vid-right{display:block}
-#accent-layer{position:fixed;left:0;right:0;bottom:0;z-index:10;height:1px;
+#accent-layer{position:absolute;left:0;right:0;bottom:0;z-index:10;height:1px;
   background:linear-gradient(to right,transparent 0,var(--brand-red) 48px,
   var(--brand-red) calc(100% - 48px),transparent 100%)}
-#overlay-layer{position:fixed;inset:0;z-index:20;pointer-events:none;
+#overlay-layer{position:absolute;inset:0;z-index:20;pointer-events:none;
   mix-blend-mode:exclusion;color:var(--color-text)}
 .nav{position:absolute;top:var(--edge);
   right:calc(var(--edge) + clamp(24px,3vw,30px) + clamp(14px,2.2vw,28px));
@@ -63,11 +84,12 @@ svg{display:block}
 .logo{position:absolute;top:var(--edge);left:var(--edge);z-index:30;pointer-events:auto;
   font-family:var(--font-heading);font-size:clamp(44px,9.5vw,104px);font-weight:500;
   line-height:.9;letter-spacing:-.03em;color:var(--brand-red)}
-#prmpt-cursor{position:fixed;left:50%;top:50%;z-index:50;pointer-events:none;
+#prmpt-cursor{position:absolute;left:50%;top:50%;z-index:50;pointer-events:none;
   color:var(--brand-red);transform:translate(-50%,-50%);
   opacity:0;transition:opacity .15s linear}
 #prmpt-cursor svg{width:46px;height:46px}
 @keyframes prmptIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes turnGold{from{background-position:0% 50%}to{background-position:200% 50%}}
 @media (hover:none),(max-width:1023px){
   #stage{cursor:auto!important}
   #prmpt-cursor{display:none!important}
@@ -79,6 +101,169 @@ svg{display:block}
 @media (prefers-reduced-motion:reduce){
   [data-rise]{animation:none!important;opacity:1!important;transform:none!important}
   #main-canvas{opacity:1!important;transition:none!important}
+}
+
+/* ========================= BODY SECTIONS + FOOTER ========================= */
+main{position:relative;z-index:5;background:var(--color-bg)}
+.shell{max-width:1240px;margin:0 auto;padding:clamp(72px,12vh,132px) clamp(20px,6vw,72px)}
+.kicker{font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--color-gold);margin:0 0 clamp(20px,3vw,30px)}
+.kicker::before{content:"";display:inline-block;width:34px;height:1px;background:var(--color-gold);
+  margin-right:14px;vertical-align:middle;opacity:.7}
+.rule{width:52px;height:1px;background:var(--color-brand);margin-top:clamp(28px,5vh,44px);opacity:.85}
+[data-reveal]{opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.22,.61,.36,1),
+  transform 1s cubic-bezier(.22,.61,.36,1)}
+[data-reveal].is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  [data-reveal]{opacity:1!important;transform:none!important;transition:none!important}
+}
+
+/* -- 01 Editorial intro -- */
+.intro-edit{text-align:left;border-bottom:1px solid var(--color-line)}
+.intro-edit h2{font-family:var(--font-heading);font-weight:500;font-size:clamp(30px,5.4vw,62px);
+  line-height:1.04;letter-spacing:-.03em;margin:0;max-width:18ch}
+.intro-edit h2 .hot{color:var(--color-accent)}
+.intro-edit h2 .sheen{color:transparent;background:linear-gradient(110deg,#e9d9a8 20%,#a88943 40%,#f3ecd2 55%,#c7a94f 75%);
+  background-size:220% 100%;-webkit-background-clip:text;background-clip:text;
+  animation:turnGold 7s linear infinite}
+.intro-edit p.lede{font-size:clamp(16px,1.8vw,20px);line-height:1.6;color:var(--color-text-dim);
+  font-weight:400;max-width:56ch;margin:clamp(24px,4vh,40px) 0 0}
+
+/* -- 02 The House -- */
+.house{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(32px,6vw,96px);
+  align-items:start}
+.house aside .big-label{font-family:var(--font-heading);font-weight:500;
+  font-size:clamp(40px,7vw,84px);line-height:.98;letter-spacing:-.03em;margin:0}
+.house aside .big-label em{font-style:normal;color:var(--color-accent)}
+.house .story p{font-size:clamp(15px,1.5vw,17.5px);line-height:1.72;color:var(--color-text-dim);
+  font-weight:400;margin:0 0 1.2em}.house .story p:last-child{margin-bottom:0}
+.house .story p strong{color:var(--color-text);font-weight:500}
+.house .story .quote{font-size:clamp(18px,2vw,23px);line-height:1.5;color:var(--color-text);
+  font-weight:400;border-left:2px solid var(--color-brand);padding-left:22px;margin:clamp(26px,4vh,40px) 0;
+  letter-spacing:-.01em}
+.stats{display:flex;gap:clamp(24px,5vw,64px);margin-top:clamp(30px,5vh,52px);flex-wrap:wrap}
+.stat .num{font-family:var(--font-heading);font-weight:500;font-size:clamp(30px,4.6vw,52px);
+  line-height:1;letter-spacing:-.02em}
+.stat .num sup{font-size:.45em;color:var(--color-gold);letter-spacing:0}
+.stat .lbl{margin-top:10px;font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--color-text-dim)}
+
+/* -- 03 Collection grid -- */
+.coll-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;
+  margin-bottom:clamp(36px,6vh,64px);flex-wrap:wrap}
+.coll-head h2{font-family:var(--font-heading);font-weight:500;font-size:clamp(30px,5.4vw,56px);
+  line-height:1.02;letter-spacing:-.03em;margin:0;max-width:16ch}
+.coll-head .note{font-size:12px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--color-text-dim);white-space:nowrap}
+.collection{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,28px)}
+.cat{display:flex;flex-direction:column}
+.cat .cat-top{display:flex;align-items:baseline;justify-content:space-between;
+  padding:16px 20px;border-top:1px solid var(--color-line)}
+.cat .cat-num{font-size:11px;font-weight:500;letter-spacing:.2em;color:var(--color-gold)}
+.cat .cat-label{font-family:var(--font-heading);font-weight:500;font-size:clamp(15px,1.4vw,17px);
+  letter-spacing:.02em}
+.shot{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/5;
+  background:linear-gradient(155deg,#20233a 0%,#151627 46%,#1a1e30 78%,#202238 100%);
+  isolation:isolate;will-change:transform}
+.shot::before{content:"";position:absolute;inset:0;z-index:1;
+  background:radial-gradient(80% 60% at 30% 18%,rgba(168,18,8,.34),transparent 55%),
+             radial-gradient(120% 90% at 82% 92%,rgba(255,40,0,.12),transparent 60%),
+             radial-gradient(90% 80% at 78% 22%,rgba(216,185,106,.16),transparent 55%)}
+.shot::after{content:"";position:absolute;left:0;right:0;bottom:0;z-index:2;height:1px;
+  background:linear-gradient(to right,transparent,rgba(216,185,106,.8),transparent)}
+.shot-label{position:absolute;z-index:3;left:0;right:0;top:0;bottom:0;display:flex;
+  align-items:center;justify-content:center;text-align:center;padding:20px;
+  font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(242,241,246,.62);line-height:1.7}
+.shot-label b{display:block;font-weight:500;color:var(--color-text);letter-spacing:.02em;
+  margin-bottom:6px;text-transform:none;font-size:13px}
+.shot-label small{color:var(--color-gold);opacity:.85;display:block;margin-top:4px}
+.cat .feature{aspect-ratio:4/4.6;margin-bottom:14px;position:relative}
+.cat-item{border-top:1px solid var(--color-line);display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:16px 20px}
+.cat-item .it-name{font-size:13.5px;font-weight:500;letter-spacing:.01em}
+.cat-item .it-meta{font-size:11px;font-weight:500;letter-spacing:.2em;color:var(--color-text-dim);
+  text-transform:uppercase;white-space:nowrap}
+.cat-item .plus{color:var(--color-accent);font-size:18px;line-height:1;transition:transform .4s cubic-bezier(.22,.61,.36,1)}
+.cat-item:hover .plus{transform:rotate(90deg)}
+.cat .ghost{aspect-ratio:16/10;margin-top:14px;border:1px dashed rgba(242,241,246,.14);border-radius:14px;
+  display:flex;align-items:center;justify-content:center;padding:16px;text-align:center;
+  font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--color-text-dim)}
+
+/* -- 04 Craftsmanship / Notes -- */
+.craft{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(32px,6vw,96px);
+  align-items:start}
+.craft .craft-text p{font-size:clamp(15px,1.5vw,17.5px);line-height:1.72;color:var(--color-text-dim);
+  font-weight:400;margin:0}
+.notes{list-style:none;margin:0;padding:0;border-top:1px solid var(--color-line)}
+.notes li{display:flex;align-items:baseline;gap:clamp(18px,3vw,40px);padding:clamp(18px,2.6vh,26px) 0;
+  border-bottom:1px solid var(--color-line)}
+.notes li .n-idx{font-size:11px;font-weight:500;letter-spacing:.2em;color:var(--color-gold);min-width:34px}
+.notes li .n-body h3{font-family:var(--font-heading);font-weight:500;font-size:clamp(18px,2vw,24px);
+  letter-spacing:-.01em;margin:0 0 8px}
+.notes li .n-body p{font-size:14px;line-height:1.6;color:var(--color-text-dim);margin:0}
+.notes li .n-num{font-family:var(--font-heading);font-weight:500;font-size:clamp(20px,2.4vw,30px);
+  margin-left:auto;color:var(--color-accent);line-height:1}
+.notes .see-tag{display:inline-block;margin-top:10px;font-size:11px;font-weight:500;letter-spacing:.2em;
+  color:var(--color-text)}
+
+/* -- 05 Boutique / Newsletter -- */
+.cta{position:relative;background:linear-gradient(180deg,var(--color-bg-raise) 0%,var(--color-bg-deep) 100%);
+  border-radius:22px;overflow:hidden;isolation:isolate}
+.cta::before{content:"";position:absolute;inset:0;z-index:0;
+  background:radial-gradient(120% 130% at 88% -10%,rgba(168,18,8,.5),transparent 52%),
+             radial-gradient(130% 120% at -10% 120%,rgba(216,185,106,.18),transparent 55%)}
+.cta-in{position:relative;z-index:1;padding:clamp(44px,7vh,80px) clamp(24px,5vw,72px);
+  display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
+.cta-in h2{font-family:var(--font-heading);font-weight:500;font-size:clamp(28px,4.6vw,50px);
+  line-height:1.05;letter-spacing:-.03em;margin:0 0 clamp(18px,3vh,24px)}
+.cta-in p{color:var(--color-text-dim);font-size:clamp(15px,1.4vw,17px);line-height:1.62;margin:0 0 4px}
+.cta-in .addr{margin-top:clamp(24px,4vh,36px);font-size:13px;letter-spacing:.02em;color:var(--color-text);
+  line-height:1.8}
+.cta-in .addr .k{color:var(--color-text-dim);font-size:11px;letter-spacing:.24em;text-transform:uppercase}
+.news-form{display:flex;gap:0;border-bottom:1px solid rgba(242,241,246,.3)}
+.news-form input{flex:1;background:transparent;border:0;outline:0;color:var(--color-text);
+  font-family:var(--font-body);font-size:15px;font-weight:400;padding:14px 0}
+.news-form input::placeholder{color:rgba(242,241,246,.4)}
+.news-form button{font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--color-accent);white-space:nowrap;padding:14px 0 14px 18px}
+.news-form button:hover{color:var(--color-gold);transition:color .3s}
+.form-note{margin-top:12px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--color-text-dim)}
+.form-ok{display:none;margin-top:14px;color:var(--color-gold);font-size:13px;font-weight:500}
+
+/* -- Footer -- */
+footer{position:relative;z-index:5;background:var(--color-bg-deep);padding:calc(clamp(60px,9vh,100px)) 0 0}
+.foot{max-width:1240px;margin:0 auto;padding:0 clamp(20px,6vw,72px)}
+.foot-top{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));
+  gap:clamp(28px,5vw,72px);padding-bottom:clamp(44px,7vh,72px);border-bottom:1px solid var(--color-line)}
+.foot-brand .wordmark{font-family:var(--font-heading);font-weight:500;font-size:clamp(38px,6vw,76px);
+  letter-spacing:-.03em;line-height:.9;color:var(--color-brand);margin:0 0 22px}
+.foot-brand p{color:var(--color-text-dim);font-size:14px;line-height:1.7;max-width:34ch;margin:0 0 24px}
+.foot-brand .social{display:flex;gap:20px;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--color-text)}
+.foot-brand .social a{color:var(--color-text-dim)}.foot-brand .social a:hover{color:var(--color-accent);opacity:1}
+.foot-col h4{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--color-text-dim);
+  font-weight:500;margin:0 0 20px}
+.foot-col ul{list-style:none;margin:0;padding:0}
+.foot-col li{font-size:14px;margin-bottom:13px}
+.foot-col a{color:var(--color-text)}.foot-col a:hover{color:var(--color-accent);opacity:1}
+.foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  padding:26px 0 clamp(30px,5vh,44px);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--color-text-dim);font-weight:500}
+.foot-bottom .legal{display:flex;gap:22px;flex-wrap:wrap}
+.foot-sheen{height:3px;background:linear-gradient(110deg,transparent,var(--color-brand) 40%,var(--color-accent) 70%,transparent)}
+
+@media (max-width:959px){
+  .house{grid-template-columns:1fr}
+  .craft{grid-template-columns:1fr}
+  .cta-in{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .foot-brand{grid-column:1 / -1}
+  .collection{grid-template-columns:1fr 1fr}
+}
+@media (max-width:620px){
+  .collection{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -116,6 +301,241 @@ svg{display:block}
     <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="24" r="21"></circle><path d="M24 9V39"></path><path d="M9 24H39"></path></svg>
   </div>
 </div>
+
+<main>
+  <!-- 01 · Editorial intro -->
+  <section class="intro-edit" aria-labelledby="intro-title">
+    <div class="shell" data-reveal>
+      <p class="kicker">Maison de Beauté</p>
+      <h2 id="intro-title">Beauty kept on <span class="hot">record</span>, not made to <span class="sheen">burn&nbsp;out</span>.</h2>
+      <p class="lede">Every JULIIA formula is written — colour, scent and care logged against the skin it was built for. Nothing seasonal, nothing disposable. An archive you return to, the way you return to a voice.</p>
+      <div class="rule"></div>
+    </div>
+  </section>
+
+  <!-- 02 · The House -->
+  <section class="hou" aria-labelledby="house-title">
+    <div class="shell reveal-wrap" data-reveal>
+      <p class="kicker">The House</p>
+      <div class="house">
+        <aside>
+          <p class="big-label" id="house-title">One house.<br><em>Three</em> crafts.</p>
+        </aside>
+        <div class="story">
+          <p><strong>JULIIA began as a single counter</strong> — a table, a lamp, and three tested formulas with no claim attached to them but one: that each held a true colour, a true scent, a true effect. We have not left that table behind so much as carried it with us, into pigment mills and perfume ateliers and cold rooms where concentrates are kept like archives.</p>
+          <p>Makeup, fragrance and skincare share the same studio and the same rulebook: small batches, finite raw materials, and a refusal to reformulate for a season. When something is done, we retire it — we do not dilute it.</p>
+          <blockquote class="quote">“Nothing we make is discarded to be fashionable. It is either kept on the archive, or it leaves the house entirely.”</blockquote>
+          <p><strong>— The studio, Paris</strong></p>
+          <div class="stats">
+            <div class="stat"><div class="num">08<sup>+</sup></div><div class="lbl">Pigments</div></div>
+            <div class="stat"><div class="num">03</div><div class="lbl">Eaux</div></div>
+            <div class="stat"><div class="num">04</div><div class="lbl">Concentrates</div></div>
+            <div class="stat"><div class="num">01<sup>+</sup></div><div class="lbl">Studio</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · The Collection -->
+  <section id="collection" class="coll" aria-labelledby="coll-title">
+    <div class="shell">
+      <div class="coll-head" data-reveal>
+        <p class="kicker">The Collection</p>
+        <h2 id="coll-title">Makeup. Fragrance.<br>Skincare.</h2>
+      </div>
+
+      <div class="collection">
+        <!-- Makeup -->
+        <div class="cat" data-reveal>
+          <div class="cat-top"><span class="cat-num">01</span><span class="cat-label">MAKEUP</span></div>
+          <div class="shot feature"><div class="shot-label"><b>Rouge Mat — No. 04 “Éclat”</b>PLACEHOLDER: product shot needed<br><small>makeup-rouge-mat-no04-eclat.jpg</small></div></div>
+          <div class="cat-item"><span class="it-name">Fluide Radieux</span><span class="it-meta">Peau · 01</span></div>
+          <div class="cat-item"><span class="it-name">Liner Velours</span><span class="it-meta">Regard · 02</span></div>
+          <div class="cat-item"><span class="it-name">Fil Souffle</span><span class="it-meta">Levres · 03</span></div>
+          <div class="ghost">PLACEHOLDER: product shot needed — makeup-grid-01.jpg</div>
+        </div>
+        <!-- Fragrance -->
+        <div class="cat" data-reveal>
+          <div class="cat-top"><span class="cat-num">02</span><span class="cat-label">FRAGRANCE</span></div>
+          <div class="shot feature"><div class="shot-label"><b>Eau — No. 02 “Our”</b>PLACEHOLDER: product shot needed<br><small>fragrance-eau-no02-our.jpg</small></div></div>
+          <div class="cat-item"><span class="it-name">Eau de JULIIA</span><span class="it-meta">Extrait · 01</span></div>
+          <div class="cat-item"><span class="it-name">Bois de Cèdre</span><span class="it-meta">Extrait · 02</span></div>
+          <div class="cat-item"><span class="it-name">Souffle d'Iris</span><span class="it-meta">Eau · 03</span></div>
+          <div class="ghost">PLACEHOLDER: product shot needed — fragrance-grid-02.jpg</div>
+        </div>
+        <!-- Skincare -->
+        <div class="cat" data-reveal>
+          <div class="cat-top"><span class="cat-num">03</span><span class="cat-label">SKINCARE</span></div>
+          <div class="shot feature"><div class="shot-label"><b>Concentré — No. 01 “Peau”</b>PLACEHOLDER: product shot needed<br><small>skincare-concentre-no01-peau.jpg</small></div></div>
+          <div class="cat-item"><span class="it-name">Sérum Clarté</span><span class="it-meta">Soin · 01</span></div>
+          <div class="cat-item"><span class="it-name">Baume Silent</span><span class="it-meta">Soin · 02</span></div>
+          <div class="cat-item"><span class="it-name">Huile Unique</span><span class="it-meta">Soin · 03</span></div>
+          <div class="ghost">PLACEHOLDER: product shot needed — skincare-grid-03.jpg</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · Craftsmanship / Notes -->
+  <section id="notes" class="craft-section" aria-labelledby="craft-title">
+    <div class="shell">
+      <p class="kicker" data-reveal>Notes &amp; Craft</p>
+      <div class="craft" data-reveal>
+        <div class="craft-text">
+          <h2 id="craft-title" style="font-family:var(--font-heading);font-weight:500;font-size:clamp(28px,4.4vw,48px);letter-spacing:-.03em;line-height:1.05;margin:0 0 clamp(20px,3vh,26px)">Written down,<br>kept slow.</h2>
+          <p>Each JULIIA piece is logged with its raw materials, its batch, and the skin or air it was measured against. These are the notes of the archive — the pigments held true, the eaux drawn, the concentrates kept in the cold room. Read them like a record of the house itself.</p>
+        </div>
+        <ul class="notes">
+          <li><span class="n-idx">PIG.</span><div class="n-body"><h3>Eight pigments, held true</h3><p>Milled in small batches, matched to near-black and lit red. Each is logged against a skin tone so its colour survives, not the season.</p></div><span class="n-num">08</span></li>
+          <li><span class="n-idx">EAU.</span><div class="n-body"><h3>Three eaux, drawn slowly</h3><p>Extracts left to settle on wool cloth. Only the top note survives to the bottle; the rest is released back to the air.</p></div><span class="n-num">03</span></li>
+          <li><span class="n-idx">SOIN.</span><div class="n-body"><h3>Four concentrates, kept cold</h3><p>Stored at two degrees to hold their measure. Applied sparingly — a concentrate earns its place by effect, not by volume.</p></div><span class="n-num">04</span></li>
+          <li><span class="n-idx">ARCH.</span><div class="n-body"><h3>One archive, never reset</h3><p>Every formula that leaves the house is kept on the record. Nothing is discarded to be fashionable.</p></div><span class="n-num">01</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · Boutique / Newsletter -->
+  <section id="boutique" class="cta-section" aria-labelledby="cta-title">
+    <div class="shell" data-reveal>
+      <div class="cta">
+        <div class="cta-in">
+          <div>
+            <p class="kicker">The Boutique</p>
+            <h2 id="cta-title">Visit the house.<br>Or keep the archive close.</h2>
+            <p>Our counter is open by appointment on the rue de Sèvres, above the pigment room. If you cannot come, the archive arrives to you — one letter per season, with the pieces we consider still worth keeping.</p>
+            <div class="addr">
+              <div class="k">COUNTER</div>
+              24 rue de Sèvres, Paris<br>
+              <div class="k" style="margin-top:12px">HOURS</div>
+              Thu–Mon · 11:00 – 19:00, by appointment
+            </div>
+          </div>
+          <div>
+            <p class="kicker">The Seasonal Letter</p>
+            <form class="news-form" id="news-form" novalidate>
+              <input type="email" id="news-email" placeholder="Your email address" aria-label="Email address" required>
+              <button type="submit">Subscribe</button>
+            </form>
+            <p class="form-note">One letter per season. Never more, never sold.</p>
+            <p class="form-ok" id="form-ok">Thank you — your letter is being prepared.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-top-wrap">
+    <div class="foot">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <p class="wordmark">JULIIA</p>
+          <p>An archive of colour, scent and care, kept in one house. Made in small batches and measured on bare skin.</p>
+          <div class="social">
+            <a href="#" onclick="return false">Instagram</a>
+            <a href="#" onclick="return false">Pinterest</a>
+            <a href="#" onclick="return false">Journal</a>
+          </div>
+        </div>
+        <div class="foot-col">
+          <h4>Collection</h4>
+          <ul>
+            <li><a href="#collection">Makeup</a></li>
+            <li><a href="#collection">Fragrance</a></li>
+            <li><a href="#collection">Skincare</a></li>
+            <li><a href="#notes">Notes &amp; Craft</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>House</h4>
+          <ul>
+            <li><a href="#notes">The Archive</a></li>
+            <li><a href="#boutique">Boutique</a></li>
+            <li><a href="#" onclick="return false">Careers</a></li>
+            <li><a href="#" onclick="return false">Press</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="#boutique">24 rue de Sèvres, Paris</a></li>
+            <li><a href="#" onclick="return false">archive@juliia.paris</a></li>
+            <li><a href="#" onclick="return false">+33 1 42 00 00 00</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> JULIIA — Maison de Beauté</span>
+      <div class="legal">
+        <span>Privacy</span>
+        <span>Terms</span>
+        <span>Craft &amp; Source</span>
+      </div>
+    </div>
+  </div>
+  <div class="foot-sheen"></div>
+</footer>
+
+<script>
+(function(){
+  const year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();
+})();
+</script>
+<script>
+(function(){
+  /* --- Scroll reveal (body sections) --- */
+  const revealEls=document.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('is-in');io.unobserve(en.target);}
+      });
+    },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+    revealEls.forEach(function(el){io.observe(el);});
+  }else{
+    revealEls.forEach(function(el){el.classList.add('is-in');});
+  }
+
+  /* --- Subtle parallax on category shots (progressively enhanced) --- */
+  const shots=document.querySelectorAll('.shot');
+  if(shots.length && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches && !matchMedia('(hover:none)').matches){
+    let raf=null;
+    shots.forEach(function(shot){
+      shot.style.willChange='transform';
+    });
+    function update(){
+      raf=null;
+      const vh=window.innerHeight;
+      shots.forEach(function(shot){
+        const r=shot.getBoundingClientRect();
+        if(r.bottom<0||r.top>vh) return;
+        const progress=(r.top+r.height/2 - vh/2)/vh; /* -0.5..0.5 */
+        shot.style.transform='translateY('+(progress*-10)+'px)';
+      });
+    }
+    function onScroll(){ if(!raf) raf=requestAnimationFrame(update); }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll);
+    update();
+  }
+
+  /* --- Newsletter --- */
+  const form=document.getElementById('news-form');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      const ok=document.getElementById('form-ok');
+      if(ok){ok.style.display='block';}
+    });
+  }
+})();
+</script>
 <script>
 (function(){
   const stage=document.getElementById('stage');

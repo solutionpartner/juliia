@@ -1,0 +1,41 @@
+MISSING ASSETS — JULIIA / index.html
+=====================================
+Product photography has NOT been provided. The page renders styled placeholders in
+their place ("PLACEHOLDER: product shot needed - <name>"). Deliver these image
+files into this folder (/opt/data/demo-mika/) and reference them by replacing the
+corresponding <div class="shot"> background in index.html.
+
+Video (existing, present — no action needed):
+  - demo-left.mp4            [present]
+  - demo-right.mp4           [present]
+
+REQUIRED PRODUCT PHOTOGRAPHY
+----------------------------
+1. rouge-mat-no04-eclat.jpg   — Rouge Mat, No. 04 “Éclat” (feature shot, Makeup)
+   CSS selector: .cat:nth-of-type(1) > .shot.feature
+2. makeup-grid-01.jpg         — secondary Makeup flat-lay (ghost tile)
+   CSS selector: .cat:nth-of-type(1) > .ghost
+3. fragrance-eau-no02-our.jpg — Eau, No. 02 “Our” (feature shot, Fragrance)
+   CSS selector: .cat:nth-of-type(2) > .shot.feature
+4. fragrance-grid-02.jpg      — secondary Fragrance flat-lay (ghost tile)
+   CSS selector: .cat:nth-of-type(2) > .ghost
+5. skincare-concentre-no01-peau.jpg — Concentré, No. 01 “Peau” (feature shot, Skincare)
+   CSS selector: .cat:nth-of-type(3) > .shot.feature
+6. skincare-grid-03.jpg       — secondary Skincare flat-lay (ghost tile)
+   CSS selector: .cat:nth-of-type(3) > .ghost
+
+SUGGESTED ADDITIONAL ASSETS (art direction / brand, optional but recommended)
+-----------------------------------------------------------------------------
+7. boutique-24-rue-sevres.jpg — The Paris counter exterior (Section 05 Boutique).
+   Currently no image is used there (text-only layout). Optional.
+8. house-studio.jpg           — The studio / pigment room for "The House" (Section 02).
+   Currently text-only. Optional.
+
+REPLACEMENT GUIDE
+-----------------
+For each feature/detail, replace the background of .shot.feature / ghost tiles with
+the real photography, e.g.:
+  .shot.feature{
+    background:url('rouge-mat-no04-eclat.jpg') center/cover no-repeat;
+  }
+and remove the .shot-label "PLACEHOLDER..." text. Then delete this file.
